@@ -8,11 +8,11 @@ You can install RNGG from the source or in the [`releases`](https://github.com/A
 
 These steps assume that you already have Rust installed
 
-Clone this repo locally: `git clone https://github.com/ArtieFuzzz/rngg.git`
-Move into the created directory: `cd rngg`
-Build source: `cargo build` or `cargo build --relase` (Build optimized exe)
-Or
-Run: `cargo run -- --help` (Shows the help menu)
+- Clone this repo locally: `git clone https://github.com/ArtieFuzzz/rngg.git`
+- Move into the created directory: `cd rngg`
+- Build source: `cargo build` or `cargo build --relase` (Build optimized exe)
+- Or
+- Run: `cargo run -- --help` (Shows the help menu)
 
 ## Usage
 
