@@ -1,21 +1,29 @@
 #![feature(is_some_with)]
+
 use rand::Rng;
-use std::{env, num::IntErrorKind};
+use structopt::StructOpt;
+
+#[derive(StructOpt, Debug)]
+/// A Random Number Generator (RNG) written in Rust
+#[structopt(name = "Random Number Generator | ArtieFuzzz#8298 |")]
+struct Args {
+    #[structopt(short, long)]
+    negative: bool,
+    number: i32,
+}
 
 fn main() {
-    let arg = env::args().nth(1).unwrap_or("".to_string());
+    let args = Args::from_args();
 
-    if arg.is_empty() {
-        return println!("You must specify a number");
+    if args.number.eq(&0) {
+        return println!("Number cannot be 0");
     }
 
-    let limit = arg.parse::<i32>();
+    let num = rand::thread_rng().gen_range(0..args.number);
 
-    if limit.is_err_with(|e| e.kind() == &IntErrorKind::PosOverflow) {
-        return println!("You have reached the limit for i32 positive numbers");
+    if args.negative {
+        return println!("-{}", num);
+    } else {
+        return println!("{}", num);
     }
-
-    let num = rand::thread_rng().gen_range(0..limit.unwrap());
-
-    println!("{}", num);
 }
